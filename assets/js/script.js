@@ -10,7 +10,7 @@ const productos = [
   {
     nombre: "Pan de molde",
     precio: 2000,
-    imagen: "assets/img/pan.jpg",
+    imagen: "assets/img/pan.png",
     id: "bread"
   },
   {
