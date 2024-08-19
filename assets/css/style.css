@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  height: 80px;
+  background-color: #4AA3F2;
+  color: white;
+  text-align: center;
+}
+
+.container {
+  width: 60%;
+  margin: 0 auto;
+  position: absolute;
+  left: 50px;
+}
+
+.card {
+  width: 200px;
+  height: 220px;
+  margin-top: 20px;
+  padding: 10px;
+  text-align: center;
+  border: solid 1px #4AA3F2;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.card-img-top {
+  width: 40%;
+  margin: 10px auto;
+}
+
+#contenedor-carrito {
+  width: 40%;
+  height: 380px;
+  border: solid 1px #4AA3F2;
+  margin-top: 20px;
+  overflow: auto;
+  position: absolute;
+  right: 50px;
+  border-radius: 10px;
+}
+
+#contenedor-carrito h2 {
+  text-align: center;
+}
+
+#cantidad {
+  width: 50px;
+}
+
+.btn-agregar {
+  border: none;
+  background-color: white;
+  color: #4AA3F2;
+  position: absolute;
+  bottom: 10px;
+  left: 90px;
+}
+
+.btn-agregar :hover {
+  color: #0e1896;
+  transform: scale(1.2);
+}
+
+.card-text-precio {
+  font-weight: 600;
+  position: absolute;
+  bottom: 30px;
+  left: 70px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-eliminar {
+  border: none;
+  background-color: white;
+  color: red;
+}
+
+.btn-eliminar :hover {
+  color: #581845;
+  transform: scale(1.2);
+}
+
+.col-6 img {
+  width: 30%;
+}
+
+.col-4 input {
+  width: 40px;
+}
+
+#elcarrito {
+  width: 80%;
+}
+
+.shoppingCartItemTitle {
+  position: absolute;
+  left: 80px;
+}
+
+#btn-finalizar {
+  position: absolute;
+  right: 40px;
+  bottom: 12px;
+  border-radius: 8px;
+  background-color: #4AA3F2;
+  color: white;
+  padding: 10px;
+  border: none;
+  font-size: 1rem;
+}
+
+#btn-finalizar :hover {
+  background-color: #0e1896;
+  color: white;
+}
+
+.contenedor-precio {
+  border: solid 1px #4AA3F2;
+  width: 40%;
+  height: 70px;
+  position: absolute;
+  right: 50px;
+  bottom: 40px;
+  border-radius: 10px;
+}
+
+#totalFoot {
+  position: absolute;
+  display: inline-block;
+  font-size: 1.5rem;
+  left: 40px;
+  top: 15px;
+}
+
+#carrito-total {
+  position: absolute;
+  display: inline-block;
+  font-size: 1.5rem;
+  left: 100px;
+  top: 15px;
+}
