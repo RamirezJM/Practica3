@@ -36,6 +36,30 @@ const productos = [
     precio: 2500,
     imagen: "assets/img/cafe.webp",
     id: "coffe"
+  },
+  {
+    nombre: "Galletas",
+    precio: 900,
+    imagen: "assets/img/galletas.webp",
+    id: "cookie"
+  },
+  {
+    nombre: "Jamón",
+    precio: 2500,
+    imagen: "assets/img/jamon.webp",
+    id: "ham"
+  },
+  {
+    nombre: "Avena",
+    precio: 1200,
+    imagen: "assets/img/avena.webp",
+    id: "oatmeal"
+  },
+  {
+    nombre: "Te",
+    precio: 1800,
+    imagen: "assets/img/te.webp",
+    id: "tea"
   }
 ];
 
@@ -58,7 +82,7 @@ for (let i = 0; i < productos.length; i++) {        /* --se crea una tarjeta de 
           `
 };
 
-document.getElementById("items").innerHTML = cards;
+document.querySelector(".items").innerHTML = cards;
 
 let botonAgregar = document.getElementsByClassName("btn-agregar");
 for (let i = 0; i < botonAgregar.length; i++) {                           /* --Se accede al botón "agregar" de cada producto-- */
@@ -66,7 +90,17 @@ for (let i = 0; i < botonAgregar.length; i++) {                           /* --S
 }
 
 const botonComprar = document.querySelector("#btn-finalizar").addEventListener("click", finalizarCompra);
-const interiorCarrito = document.getElementById("contenedor-carrito");
+const interiorCarrito = document.querySelector(".contenedor-carrito");
+const topCarrito = document.querySelector('header>.fa-cart-shopping')
+const cerrarCarrito = document.querySelector('.fa-x')
+
+topCarrito.addEventListener('click', () =>{
+  interiorCarrito.classList.add('carrito-activo')
+  
+})
+cerrarCarrito.addEventListener('click', () =>{
+  interiorCarrito.classList.remove('carrito-activo')
+})
 
 /* --FUNCIÓN para agregar productos al carro-- */
 
