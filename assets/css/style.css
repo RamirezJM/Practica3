@@ -82,7 +82,7 @@ main{
   display: flex;
   flex-direction: column;
   border: solid 1px #4AA3F2;
-  margin-top: 1em;
+  margin-top: 4em;
   z-index: 10;
   border-radius: 10px;
   background-color: #ffffff;
@@ -101,6 +101,13 @@ main{
 .carrito-activo{
   transform: translateX(0);
 }
+
+.productos{
+  overflow: scroll;
+  margin: .5em auto;
+  border-top: solid 2px #4AA3F2;
+}
+
 .contenedor-precio {
   border: solid 1px red;
   display: flex;

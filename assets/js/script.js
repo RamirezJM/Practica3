@@ -128,6 +128,7 @@ function crearProducto(productoTitulo, productoPrecio, productoImagen) {
       return;
     }                             /* --se crea un contenedor con elementos de Bootstrap para el producto en el carro-- */
   }
+  const listaProductos = document.querySelector('.productos')
   const productoCarrito = document.createElement("div");
   const contenidoCarrito = `<div class="row shoppingCartItem" id="elcarrito">
                               <div class="col-6">
@@ -150,7 +151,7 @@ function crearProducto(productoTitulo, productoPrecio, productoImagen) {
                             </div>
   `
   productoCarrito.innerHTML = contenidoCarrito;
-  interiorCarrito.appendChild(productoCarrito);
+  listaProductos.appendChild(productoCarrito);
 
   productoCarrito.querySelector(".fa-regular").addEventListener("click", eliminarProducto);
   productoCarrito.querySelector(".shoppingCartItemQuantity").addEventListener("change", cambiarCantidad);
@@ -167,10 +168,24 @@ function actualizarTotal() {
   carritoItems.forEach((shoppingCartItem) => {
     const carritoItemsPrecio = Number(shoppingCartItem.querySelector(".shoppingCartItemPrice").textContent.replace("$", ""));
     const productoCantidad = Number(shoppingCartItem.querySelector(".shoppingCartItemQuantity").value);
-
+    
     total = total + carritoItemsPrecio * productoCantidad;
+    
   });
   totalCarrito.innerHTML = `$${total}`;
+  
+}
+
+/* */
+
+function calcularProductos(){
+  let productos = 0
+  const totalProductos  = document.querySelector('.total-carrito')
+  const carritoItems = document.querySelectorAll(".shoppingCartItem");
+  
+  carritoItems = productos
+  totalProductos.innerHTML = `${productos}`
+
 }
 
 /* --FUNCIÓN que elimina productos del carro-- */
