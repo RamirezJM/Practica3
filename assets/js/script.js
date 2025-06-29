@@ -129,6 +129,7 @@ function crearProducto(productoTitulo, productoPrecio, productoImagen) {
     }                             /* --se crea un contenedor con elementos de Bootstrap para el producto en el carro-- */
   }
   const listaProductos = document.querySelector('.productos')
+  
   const productoCarrito = document.createElement("div");
   const contenidoCarrito = `<div class="row shoppingCartItem" id="elcarrito">
                               <div class="col-6">
@@ -152,6 +153,7 @@ function crearProducto(productoTitulo, productoPrecio, productoImagen) {
   `
   productoCarrito.innerHTML = contenidoCarrito;
   listaProductos.appendChild(productoCarrito);
+  console.log(productoCarrito)
 
   productoCarrito.querySelector(".fa-regular").addEventListener("click", eliminarProducto);
   productoCarrito.querySelector(".shoppingCartItemQuantity").addEventListener("change", cambiarCantidad);
@@ -163,6 +165,9 @@ function crearProducto(productoTitulo, productoPrecio, productoImagen) {
 
 function actualizarTotal() {
   let total = 0;
+  let productos = 0
+ 
+  const totalProductos  = document.querySelector('.total-carrito')
   const totalCarrito = document.querySelector("#carrito-total");
   const carritoItems = document.querySelectorAll(".shoppingCartItem");
   carritoItems.forEach((shoppingCartItem) => {
@@ -170,23 +175,31 @@ function actualizarTotal() {
     const productoCantidad = Number(shoppingCartItem.querySelector(".shoppingCartItemQuantity").value);
     
     total = total + carritoItemsPrecio * productoCantidad;
-    
+    productos = productoCantidad * carritoItems
   });
   totalCarrito.innerHTML = `$${total}`;
+  totalProductos.innerHTML = productos
   
 }
 
 /* */
 
-function calcularProductos(){
+/* function calcularProductos(){
   let productos = 0
   const totalProductos  = document.querySelector('.total-carrito')
+    const totalCarrito = document.querySelector("#carrito-total");
   const carritoItems = document.querySelectorAll(".shoppingCartItem");
+  carritoItems.forEach((shoppingCartItem) => {
+    const carritoItemsPrecio = Number(shoppingCartItem.querySelector(".shoppingCartItemPrice").textContent.replace("$", ""));
+    const productoCantidad = Number(shoppingCartItem.querySelector(".shoppingCartItemQuantity").value);
+        total = total + carritoItemsPrecio * productoCantidad;
+    
+  });
+  */
   
-  carritoItems = productos
-  totalProductos.innerHTML = `${productos}`
 
-}
+
+
 
 /* --FUNCIÓN que elimina productos del carro-- */
 
