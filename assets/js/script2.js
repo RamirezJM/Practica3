@@ -64,10 +64,11 @@ const productos = [
 ];
 
 let carrito = []
-let catalogoProductos = []
+let galeriaProductos = document.querySelector('.productos-galeria')
+galeriaProductos.innerHTML = ''
 
 const tarjetaProducto = productos.forEach( producto => {   
-   
+   const productoHtml =
  `<div class="card">
     <img src=${producto.imagen} class="card-img-top" alt="imagen">
     <div class="card-body">
@@ -77,9 +78,19 @@ const tarjetaProducto = productos.forEach( producto => {
     </div>
   </div>`
 
+  galeriaProductos.insertAdjacentHTML("beforeend", productoHtml)
 })
-catalogoProductos.push(tarjetaProducto)
-document.querySelector(".items").innerHTML = catalogoProductos;
+
+galeriaProductos.addEventListener('click', (event) => {
+  console.log(event.target.closest('.btn-agregar').id)
+    
+  }
+)
+
+
+
+
+/* document.querySelector(".items").innerHTML = catalogoProductos;
 
 const botonAgregar = document.querySelectorAll(".btn-agregar");
 botonAgregar.forEach(boton => {
@@ -94,4 +105,4 @@ carritoHeader.addEventListener('click', () =>{
 })
 cerrarCarrito.addEventListener('click', () =>{
   interiorCarrito.classList.remove('carrito-activo')
-})
+}) */

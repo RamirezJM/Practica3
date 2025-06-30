@@ -39,7 +39,7 @@ main{
   padding: 1em;
 }
 
-.items{
+.productos-galeria{
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
