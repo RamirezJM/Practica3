@@ -81,11 +81,24 @@ const tarjetaProducto = productos.forEach( producto => {
   galeriaProductos.insertAdjacentHTML("beforeend", productoHtml)
 })
 
-galeriaProductos.addEventListener('click', (event) => {
+/* galeriaProductos.addEventListener('click', (event) => {
   console.log(event.target.closest('.btn-agregar').id)
     
   }
-)
+) */
+
+  galeriaProductos.addEventListener('click', (event) => {
+     const botonAgregar = event.target.closest('.btn-agregar')
+     agregarProducto(event)
+     
+ })   
+  function agregarProducto(event){
+ 
+     if(botonAgregar){
+      const productoId = botonAgregar.id
+      const productoAlCarro = productos.find(prod => prod.id === productoId)
+     }
+    }
 
 
 

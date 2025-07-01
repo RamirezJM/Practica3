@@ -78,7 +78,7 @@ main{
   gap: 1em;
 }
 
-.contenedor-carrito {
+.carro-compras {
   display: flex;
   flex-direction: column;
   border: solid 1px #4AA3F2;
