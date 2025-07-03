@@ -35,7 +35,7 @@ const productos = [
     nombre: "Café",
     precio: 2500,
     imagen: "assets/img/cafe.webp",
-    id: "coffe"
+    id: "coffee"
   },
   {
     nombre: "Galletas",
@@ -74,48 +74,43 @@ const tarjetaProducto = productos.forEach( producto => {
     <div class="card-body">
       <h5 class="card-title">${producto.nombre}</h5>
       <p class="card-text-precio">$${producto.precio}</p>
-      <button type="button" id="${producto.id} "class="btn-agregar"><i class="fa-solid fa-cart-shopping"></i></button>
+      <button type="button" id="${producto.id}" class="btn-agregar"><i class="fa-solid fa-cart-shopping"></i></button>
     </div>
   </div>`
 
   galeriaProductos.insertAdjacentHTML("beforeend", productoHtml)
 })
 
-/* galeriaProductos.addEventListener('click', (event) => {
-  console.log(event.target.closest('.btn-agregar').id)
-    
-  }
-) */
-
   galeriaProductos.addEventListener('click', (event) => {
      const botonAgregar = event.target.closest('.btn-agregar')
-     agregarProducto(event)
-     
- })   
-  function agregarProducto(event){
- 
      if(botonAgregar){
-      const productoId = botonAgregar.id
-      const productoAlCarro = productos.find(prod => prod.id === productoId)
+     agregarProducto(botonAgregar)
      }
+ })   
+
+  function agregarProducto(botonAgregar){
+      const productoId = botonAgregar.id
+      
+      const productoAlCarro = productos.find(producto => producto.id === productoId)
+
+      const productoExistente = carrito.find(prod => prod.id === productoId)
+      if(productoExistente){
+        productoExistente.quantity++
+      }
+      else{
+        carrito.push({...productoAlCarro, quantity: 1})
+        console.log(`${productoAlCarro.nombre} añadido al carro`)
+      }
+     renderizarCarrito()
+     guardarCarrito()
     }
 
+function renderizarCarrito(){
+
+}
+
+function guardarCarrito(){
+
+}
 
 
-
-/* document.querySelector(".items").innerHTML = catalogoProductos;
-
-const botonAgregar = document.querySelectorAll(".btn-agregar");
-botonAgregar.forEach(boton => {
-  boton.addEventListener('click', agregarProducto)
-})
-
-const carritoHeader = document.querySelector('header>.fa-cart-shopping')
-const cerrarCarrito = document.querySelector('.fa-x')
-carritoHeader.addEventListener('click', () =>{
-  interiorCarrito.classList.add('carrito-activo')
-  
-})
-cerrarCarrito.addEventListener('click', () =>{
-  interiorCarrito.classList.remove('carrito-activo')
-}) */
