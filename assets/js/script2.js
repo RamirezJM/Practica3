@@ -69,21 +69,29 @@ const carroCompras = document.querySelector('.carro-compras')
 const contenedorProductosCarro = document.querySelector('.contenedor-productos-carro')
 const totalCarro = document.querySelector('.total-carro')
 const cuentaProductos = document.querySelector('.total-productos-carro')
+const botonFinalizar = document.querySelector('.btn-finalizar')
 const galeriaProductos = document.querySelector('.productos-galeria')
-galeriaProductos.innerHTML = ''
 
-const tarjetaProducto = productos.forEach(producto => {
-  const productoHtml =
-    `<div class="card">
+document.addEventListener('DOMContentLoaded', () => {
+  galeriaProductos.innerHTML = ''
+
+  productos.forEach(producto => {
+    const productoHtml =
+      `<div class="card">
     <img src="${producto.imagen}" class="card-img-top" alt="${producto.nombre}">
     <div class="card-body">
-      <h5 class="card-title">${producto.nombre}</h5>
+      <h3 class="card-title">${producto.nombre}</h3>
       <p class="card-text-precio">$${producto.precio}</p>
       <button type="button" id="${producto.id}" class="btn-agregar"><i class="fa-solid fa-cart-shopping"></i></button>
     </div>
   </div>`
 
-  galeriaProductos.insertAdjacentHTML("beforeend", productoHtml)
+    galeriaProductos.insertAdjacentHTML("beforeend", productoHtml)
+  })
+
+  cargarCarrito()
+  renderizarCarrito()
+
 })
 
 galeriaProductos.addEventListener('click', (event) => {
@@ -141,7 +149,7 @@ function renderizarCarrito() {
                               <h4>${producto.nombre}</h4>
                               <img src="${producto.imagen}" alt="${producto.nombre}">
                               <p>$${producto.precio.toLocaleString('es-CL')}</p>
-                              <input type="number" value="${producto.cantidad}" min="1" data-id="${producto.id}">
+                              <input type="number" class="carro-cantidad" value="${producto.cantidad}" min="1" data-id="${producto.id}">
                           
                               <button class="btn-eliminar" data-id="${producto.id}">X</button>
                             </div>
@@ -149,12 +157,96 @@ function renderizarCarrito() {
     contenedorProductosCarro.insertAdjacentHTML('beforeend', productoCarroHtml)
   })
 
+  totalCarro.textContent = `$${totalCompra.toLocaleString('es-CL')}`
+  if (cuentaProductos) {
+    if (unidadesEnCarro === 0) {
+      cuentaProductos.textContent = ''
+    } else {
+      cuentaProductos.textContent = unidadesEnCarro
+    }
 
-
+  }
 }
+  //  LOCAL STORAGE
 
-function guardarCarrito() {
+  function guardarCarrito() {
+    localStorage.setItem('carroCompras', JSON.stringify(carrito))
+    console.log('carro guardado')
 
-}
+  }
+
+  //  CARGAR LOCAL STORAGE
+
+
+  function cargarCarrito() {
+    const carroGuardado = localStorage.getItem('carroCompras')
+    if (carroGuardado) {
+      carrito = JSON.parse(carroGuardado)
+      console.log('carro cargado')
+    }
+  }
+
+  //  CAMBIAR CANTIDAD PRODUCTO
+
+  contenedorProductosCarro.addEventListener('input', (event) => {
+    if (event.target.classList.contains('carro-cantidad')) {
+      const productoId = event.target.dataset.id
+      const nuevaCantidad = Number(event.target.value)
+
+      cambiarCantidadProducto(productoId, nuevaCantidad)
+    }
+  })
+
+  function cambiarCantidadProducto(productoId, nuevaCantidad) {
+    const producto = carrito.find(item => item.id === productoId)
+    if (producto) {
+      const cantidad = Number(nuevaCantidad)
+      if (isNaN(cantidad) || cantidad < 0) {
+        if (cantidad <= 0) {
+          eliminarProducto(productoId)
+          return
+        }
+        producto.cantidad = 1
+      }
+      else {
+        producto.cantidad = cantidad
+      }
+      renderizarCarrito()
+      guardarCarrito()
+    }
+  }
+
+  //   ELIMINAR PRODUCTO
+
+  contenedorProductosCarro.addEventListener('click', (event) => {
+    if (event.target.classList.contains('btn-eliminar')) {
+      const productoId = event.target.dataset.id
+      eliminarProducto(productoId)
+    }
+  })
+
+  function eliminarProducto(productoId) {
+    carrito = carrito.filter(item => item.id !== productoId)
+    renderizarCarrito()
+    guardarCarrito()
+  }
+
+  //  FINALIZAR COMPRA
+
+  botonFinalizar.addEventListener('click', () => {
+    finalizarCompra()
+  })
+
+  function finalizarCompra() {
+    carrito = []
+    renderizarCarrito()
+    guardarCarrito()
+    mostrarMensajeFinal()
+    carroCompras.classList.remove('carro-activo')
+  }
+
+//   MOSTRAR MENSAJE CONFIRMACIÓN
+
+
 
 

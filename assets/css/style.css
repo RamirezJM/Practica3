@@ -19,12 +19,13 @@ header>.fa-cart-shopping{
  
 }
 
-.total-carrito{
+.total-productos-carro{
   position: absolute;
-  left: 10px;
-  top: 5px;
+  left: 8px;
+  padding: .5em;
   min-width: 15px;
   font-size: .8rem;
+  font-weight: 600;
   color: red;
   z-index: 5;
 }
@@ -40,9 +41,9 @@ main{
 }
 
 .productos-galeria{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
+ display: flex;
+flex-wrap: wrap; 
+  gap: 2em;
   margin: 0 auto;
   width: 90%;
   padding: 1em;
@@ -50,13 +51,15 @@ main{
 
 .card {
 
-  width: clamp(200px, 15vw, 300px);
+  width: clamp(150px, 22vw, 200px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1em;
   border: solid 2px #4AA3F2;
+  background-color: #ffffff;
+  border-radius: 5px;
 }
 
 .card-img-top {
@@ -106,12 +109,21 @@ main{
 
 .producto-carro{
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  justify-items: start;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
   gap: .5em;
+  border-bottom: solid 2px #4AA3F2;
+}
+.producto-carro:last-of-type{
+  border-bottom: none;
+}
+h4{
+  grid-column: 1 / -1;
+  justify-self: center;
 }
 .producto-carro>img{
-  width: 80%;
+  width: 50%;
 }
 .producto-carro>input{
   width: 50px;
@@ -121,25 +133,17 @@ main{
 .contenedor-precio {
   border: solid 1px red;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  padding: .5em;
+  padding: .1em;
   margin-top: auto;
   border-radius: 10px;
+  gap: 1em;
 }
 
-
-/* .contenedor-carrito h2 {
-  text-align: center;
+.btn-finalizar{
+  margin-left: auto;
 }
-.contenedor-carrito>i.fa-x{
- margin: -1em .5em 0 auto;
- color: #4AA3F2;
- font-weight: 600;
- 
- 
-
-}
- */
 
 
 .btn-agregar {
@@ -157,16 +161,12 @@ main{
 
 .card-text-precio {
   font-weight: 600;
- /*  position: absolute;
-  bottom: 30px;
-  left: 70px; */
+ 
   font-size: 1.1rem;
 }
 
 
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
+
 
 
 .btn-eliminar {
