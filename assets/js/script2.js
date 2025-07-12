@@ -151,7 +151,7 @@ function renderizarCarrito() {
                               <p>$${producto.precio.toLocaleString('es-CL')}</p>
                               <input type="number" class="carro-cantidad" value="${producto.cantidad}" min="1" data-id="${producto.id}">
                           
-                              <button class="btn-eliminar" data-id="${producto.id}">X</button>
+                              <button class="btn-eliminar" data-id="${producto.id}"><i class="fa-regular fa-trash-can"></i></button>
                             </div>
                             `
     contenedorProductosCarro.insertAdjacentHTML('beforeend', productoCarroHtml)
@@ -218,12 +218,21 @@ function renderizarCarrito() {
 
   //   ELIMINAR PRODUCTO
 
-  contenedorProductosCarro.addEventListener('click', (event) => {
-    if (event.target.classList.contains('btn-eliminar')) {
+  /* contenedorProductosCarro.addEventListener('click', (event) => {
+    if (event.target.closest('btn-eliminar')) {
       const productoId = event.target.dataset.id
       eliminarProducto(productoId)
     }
-  })
+  }) */
+ contenedorProductosCarro.addEventListener('click', (event) => {
+  const botonEliminar = event.target.closest('.btn-eliminar')
+  if (botonEliminar) { // Verifica si se encontró un botón con la clase
+        const productoId = botonEliminar.dataset.id; // Obtén el ID del botón encontrado
+        eliminarProducto(productoId); // Llama a tu función para eliminar
+    }
+ })
+
+
 
   function eliminarProducto(productoId) {
     carrito = carrito.filter(item => item.id !== productoId)

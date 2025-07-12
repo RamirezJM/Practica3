@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  color: #333333;
+}
 
 header {
   display: flex;
@@ -58,7 +61,7 @@ flex-wrap: wrap;
   align-items: center;
   gap: 1em;
   border: solid 2px #4AA3F2;
-  background-color: #ffffff;
+  background-color: #F2F2F2;
   border-radius: 5px;
 }
 
@@ -114,6 +117,7 @@ flex-wrap: wrap;
   align-items: center;
   gap: .5em;
   border-bottom: solid 2px #4AA3F2;
+  padding: 1em;
 }
 .producto-carro:last-of-type{
   border-bottom: none;
@@ -131,18 +135,25 @@ h4{
 }
 
 .contenedor-precio {
-  border: solid 1px red;
+  border: solid 2px #4AA3F2;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: .1em;
+  padding: 1em;
   margin-top: auto;
-  border-radius: 10px;
+  border-radius: 5px;
   gap: 1em;
 }
 
 .btn-finalizar{
   margin-left: auto;
+  padding: .5em 1em;
+  background-color: #9C0D38;
+  color: #F2F2F2;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+
 }
 
 
@@ -172,7 +183,8 @@ h4{
 .btn-eliminar {
   border: none;
   background-color: white;
-  color: red;
+  color: #9C0D38;
+  font-size: 1.2rem;
 }
 
 .btn-eliminar :hover {
